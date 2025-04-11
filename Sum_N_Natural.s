@@ -1,0 +1,23 @@
+	AREA RESET,DATA,READONLY
+	EXPORT __Vectors
+__Vectors
+	DCD 0x10001000
+	DCD Reset_Handler
+	ALIGN 
+	AREA mycode,CODE,READONLY
+	ENTRY
+	EXPORT Reset_Handler
+Reset_Handler
+	MOV R0,#10
+	LDR R10,=result
+	MLA R1,R0,R0,R0
+	MOV R3,#0
+L1	SUB R1,#2
+	ADD R3,#1
+	CMP R1,#2
+	BHS L1
+	STR R3,[R10]
+STOP B STOP
+	AREA mydata,DATA,READWRITE
+result DCD 0
+	END
