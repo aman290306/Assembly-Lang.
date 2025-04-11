@@ -1,0 +1,26 @@
+	AREA RESET,DATA,READONLY;Division by reperitive subtraction
+	EXPORT __Vectors
+__Vectors
+	DCD 0x10001000
+	DCD Reset_Handler
+	ALIGN 
+	AREA mycode,CODE,READONLY
+	ENTRY
+	EXPORT Reset_Handler
+Reset_Handler
+	MOV R0,#54
+	MOV R1,#4
+	MOV R2,#0
+	LDR R3,=QUO
+	LDR R4,=REM
+L1	SUB R0,R1
+	ADD R2,#1
+	CMP R0,R1
+	BHS L1
+	STR R2,[R3]
+	STR R0,[R4]
+STOP B STOP
+	AREA mydata, DATA, READWRITE
+QUO DCD 0
+REM DCD 0
+	END
