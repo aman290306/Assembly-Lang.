@@ -10,7 +10,7 @@ Count RN R1
 PDT RN R2
 	EXPORT Reset_Handler
 Reset_Handler
-	MOV R0,#10 // input number to calculate factorial
+	MOV R0,#10 ; input number to calculate factorial
 	MOV Count,R0
 	MOV PDT,#1 
 L1	MUL PDT,PDT,Count
